@@ -5,13 +5,13 @@
 </div>
 
 <div class="row">
-    <div class="small-12 medium-6 columns">
+    <div class="small-12 <%= current_game.present? && !current_game.finished? ? 'medium-6' : '' %> columns">
         <%= link_to new_game_path, :class => 'button expand' do %>
             <i class="fa fa-play"> New game</i>
         <% end %>
     </div>
 
-    <% if current_game.present? && !current_game.finished? %>
+    <% if session[:current_game].present? %>
         <div class="small-12 medium-6 columns">
             <%= link_to game_path, :class => 'button expand' do %>
                 <i class="fa fa-refresh"> Continue game</i>
